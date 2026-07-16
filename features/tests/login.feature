@@ -1,6 +1,8 @@
 # Created by bbkam at 7/11/2026
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Test for login feature
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+
+  Scenario: User can access login page
+    Given Open TVmall main page
+    When Click on login icon
+    Then Verify login page is open

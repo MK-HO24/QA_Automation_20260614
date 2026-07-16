@@ -1,6 +1,8 @@
 # Created by bbkam at 7/11/2026
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Tests for cart features
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+
+  Scenario: User can access shopping cart
+    Given Open TVmall main page
+    When Click on shopping cart
+    Then Verify cart is empty

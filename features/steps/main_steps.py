@@ -8,9 +8,9 @@ def open_tvmall(context):
     context.driver.get("https://www.hktvmall.com/hktv/en/")
     sleep(5)
 
-@when('Search for a product')
-def search_for_product(context):
-    context.driver.find_element(By.CSS_SELECTOR,'.SuggestionSearch-input').send_keys('bag')
+@when('Search for a {product}')
+def search_for_product(context, product):
+    context.driver.find_element(By.CSS_SELECTOR,'.SuggestionSearch-input').send_keys(product)
     context.driver.find_element(By.CSS_SELECTOR,'.magnifier').click()
 
 
@@ -26,21 +26,24 @@ def click_on_login_icon(context):
     sleep(5)
 
 
-@then('Verify correct search result shown')
-def verify_search_result(context):
-    actual = context.driver.find_element(By.CSS_SELECTOR,'.cat_breadcrumb-disabled').text
-    expected = "All Products"
-    assert expected in actual, f'expected {expected} but got {actual}'
+@when('Close pop up message')
+def close_popup(context):
+    context.driver.find_element(By.CSS_SELECTOR,'.btnCloseLarge').click()
 
 
-@then('Verify cart is empty')
-def verify_empty_cart(context):
-    text_displayed = context.driver.find_element(By.CSS_SELECTOR,'.CartEmptyTitle').text
-    assert 'empty' in text_displayed, f'expected empty, but got {text_displayed}'
+@when('Verify header has {num} links')
+def verify_header_links(context, num):
+    links = context.driver.find_elements(By.CSS_SELECTOR,"div.account a[class*='btn-']")
+    print(links)
+    assert len(links) == int(num), f'expected {num} links, got {len(links)}'
 
 
-@then('Verify login page is open')
-def verify_login_page(context):
-    exp_msg = 'Existing Customer'
-    actual_msg = context.driver.find_element(By.CSS_SELECTOR,'.login-section-header').text
-    assert exp_msg in actual_msg, f'expected {exp_msg} but got {actual_msg}'
+@when('Verify header is shown')
+def verify_header(context):
+    context.driver.find_element(By.CSS_SELECTOR,'div.navi.wrapper')
+
+
+@when('Verify header has links')
+def verify_header_links(context):
+    links = context.driver.find_elements(By.CSS_SELECTOR, "div.account a[class*='btn-']")
+    assert len(links) > 0

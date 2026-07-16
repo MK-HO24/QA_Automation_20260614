@@ -1,6 +1,7 @@
 # Created by bbkam at 7/16/2026
-Feature: # Enter feature name here
+Feature: Customer Service UI Test
   # Enter feature description here
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Verify customer service UI elements
+    Given Open customer service page
+    Then Verify that all major elements are present

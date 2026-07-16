@@ -1,6 +1,7 @@
 # Created by bbkam at 7/16/2026
-Feature: # Enter feature name here
+Feature: Job opportunity page feature
   # Enter feature description here
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Verify Job Opp tiles shown
+    Given Open Job Opp page
+    Then Verify that 12 tiles are shown

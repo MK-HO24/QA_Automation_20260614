@@ -1,21 +1,32 @@
 # Created by bbkam at 7/10/2026
 Feature: Test for TV Mall search functionality
 
-
-  Scenario: User can access shopping cart
+  Scenario: User can search for a product
     Given Open TVmall main page
-    When Click on shopping cart
-    Then Verify cart is empty
+    When Close pop up message
+    When Search for a tea
+    Then Verify correct search result shown for tea
 
 
   Scenario: User can search for a product
     Given Open TVmall main page
-    When Search for a product
-    Then Verify correct search result shown
+    When Close pop up message
+    When Search for a jeans
+    Then Verify correct search result shown for jeans
 
 
-  Scenario: User can access login page
+  Scenario Outline: User can search for a product
     Given Open TVmall main page
-    When Click on login icon
-    Then Verify login page is open
+    When Close pop up message
+    When Search for a <product>
+    Then Verify correct search result shown for <product>
+
+    Examples:
+    |product |
+    |shirt   |
+    |pants   |
+    |socks   |
+
+
+
 
