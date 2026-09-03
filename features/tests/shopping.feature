@@ -5,5 +5,7 @@ Feature: Test for shopping experience
   Scenario: Verify that use is able to add product to cart
     Given Open TVmall main page
     When Search for a shirt
-    When Add item to cart
+    And Add item to cart
     Then Verify that item is added to cart
+    When Store item name
+    Then Verify that correct item is added to cart
